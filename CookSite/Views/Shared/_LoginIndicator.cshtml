@@ -1,0 +1,13 @@
+﻿@{
+    if (User.Identity.IsAuthenticated)
+    {
+        <div>
+            Merhaba, @(User.FindFirst("Fullname")?.Value)
+            <a asp-action="Logout" asp-controller="Account">Çıkış</a>
+        </div>
+    }
+    else
+    {
+        <a asp-action="Login" asp-controller="Account">Giriş</a>
+    }
+}

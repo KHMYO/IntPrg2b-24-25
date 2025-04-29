@@ -1,4 +1,5 @@
-﻿using CookSite.Models.ViewModels;
+﻿using CookSite.Models;
+using CookSite.Models.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,14 @@ namespace CookSite.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly CookSiteContext context;
+
+        public AccountController()
+        {
+            context = new CookSiteContext();
+        }
+
+
         public IActionResult Index()
         {
             return View();
@@ -30,11 +39,17 @@ namespace CookSite.Controllers
                     throw new Exception("Girilen verilerin yapısı doğru değil!");
                 }
 
-                if (data.Username=="abc" && data.Password=="1234") {
+                var user= context
+                            .Users
+                            .FirstOrDefault(x=>x.Username==data.Username && x.Password==data.Password);
+
+
+                if (user is not null) {
                     //oturum açma kodları buraya gelecek
                     var claims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.Name, data.Username),
+                        new Claim(ClaimTypes.Name, user.Username),
+                        new Claim("Fullname",$"{user.Name} {user.Lastname}"),
                         new Claim("Id","10")
                     };
 
@@ -69,6 +84,11 @@ namespace CookSite.Controllers
 
         }
 
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
+        }
 
 
 

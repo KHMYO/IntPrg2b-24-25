@@ -39,12 +39,7 @@
 
 <body>
 
-    @{
-        if (User.Identity.IsAuthenticated)
-        {
-            <h1>Merhaba , @(User.FindFirst(ClaimTypes.Name)?.Value)</h1>
-        }
-    }
+   @Html.Partial("_LoginIndicator")
 
     <!-- Navigation Start -->
     <!-- Header Start -->
