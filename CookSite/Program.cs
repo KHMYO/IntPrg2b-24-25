@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 namespace CookSite
 {
     public class Program
@@ -8,6 +10,26 @@ namespace CookSite
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                            .AddCookie(opt => {
+                                opt.LoginPath = "/Account/Login";
+                                opt.LogoutPath = "/Account/Logout";
+                                opt.AccessDeniedPath = "/Account/AccessDenied";
+                                opt.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                                opt.SlidingExpiration = true;
+                                opt.Cookie.Name = "UserData";
+                                opt.Cookie.HttpOnly = true;
+                                opt.Cookie.SameSite = SameSiteMode.Strict;
+                            });
+
+
+
+
+
+
+
+
 
             var app = builder.Build();
 

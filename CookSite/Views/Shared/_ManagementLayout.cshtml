@@ -184,6 +184,19 @@
                             <li><a href="./index2.html">Dashboard 2</a></li>
                         </ul>
                     </li>
+
+                    <li>
+                        <a  aria-expanded="false" asp-controller="ManagementUser" asp-action="Index">
+                            <i class="icon icon-globe-2"></i><span class="nav-text">Users</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a aria-expanded="false" asp-controller="ManagementCookTypes" asp-action="Index">
+                            <i class="icon icon-globe-2"></i><span class="nav-text">Cook Types</span>
+                        </a>
+                    </li>
+
                     <li class="nav-label">Apps</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -381,7 +394,7 @@
 
 
     <script src="/management/js/dashboard/dashboard-1.js"></script>
-
+    @RenderSection("Scripts",required:false)
 </body>
 
 </html>

@@ -1,0 +1,36 @@
+﻿@using CookSite.Models.ViewModels
+@model UserLoginViewModel
+
+@{
+    Layout = null;
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Login</title>
+</head>
+<body>
+
+    @{
+        if (ViewBag.ErrorMessage is not null)
+        {
+            <h3 style=" color:red">@ViewBag.ErrorMessage</h3>
+        }
+    }
+
+
+    <form method="post">
+        <div>
+            Kullanıcı Adı :  <input type="text" asp-for="Username" />
+        </div>
+        <div>
+            Şifre : <input type="password" asp-for="Password" />
+        </div>
+        <div>
+            <input type="submit" value="Giriş" />
+        </div>
+    </form>
+</body>
+</html>
+
+

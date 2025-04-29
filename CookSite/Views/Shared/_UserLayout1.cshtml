@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+<!DOCTYPE html>
 
 <!--
  // WEBSITE: https://themefisher.com
@@ -38,6 +39,12 @@
 
 <body>
 
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            <h1>Merhaba , @(User.FindFirst(ClaimTypes.Name)?.Value)</h1>
+        }
+    }
 
     <!-- Navigation Start -->
     <!-- Header Start -->
@@ -61,7 +68,7 @@
     <!-- Navigation ENd -->
     <!-- Banner Start -->
     <section class="section banner">
-       @Html.Partial("_Banner")
+        @Html.Partial("_Banner")
     </section>
 
     <!-- Banner End -->
