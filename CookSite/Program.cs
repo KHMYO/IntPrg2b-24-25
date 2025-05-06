@@ -12,7 +12,8 @@ namespace CookSite
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                            .AddCookie(opt => {
+                            .AddCookie(opt =>
+                            {
                                 opt.LoginPath = "/Account/Login";
                                 opt.LogoutPath = "/Account/Logout";
                                 opt.AccessDeniedPath = "/Account/AccessDenied";
@@ -47,7 +48,7 @@ namespace CookSite
             app.UseRouting();
 
             app.UseAuthorization();
-            
+
             //tek rota (route) kullanýlacaksa bu kalmalý
             //app.MapControllerRoute(
             //    name: "default",
@@ -58,23 +59,24 @@ namespace CookSite
 
 
             //biden fazla rota kullanýlacaksa bu þekilde yazýlmalý
-            app.UseEndpoints(endpoints => {
+            app.UseEndpoints(endpoints =>
+            {
 
                 endpoints.MapControllerRoute(
                    name: "default",
                    pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
-                       name:"iletisim",
-                       pattern:"iletisim",
-                       defaults: new {controller="Home",action="Contact" }
+                       name: "iletisim",
+                       pattern: "iletisim",
+                       defaults: new { controller = "Home", action = "Contact" }
                     );
 
 
                 endpoints.MapControllerRoute(
-                    name:"yemek",
-                    pattern:"Yemek/{numara:int}",
-                    defaults: new {controller="Cook",action="Detail" }
+                    name: "yemek",
+                    pattern: "Yemek/{numara:int}",
+                    defaults: new { controller = "Cook", action = "Detail" }
                     );
 
                 endpoints.MapControllerRoute(
@@ -84,15 +86,20 @@ namespace CookSite
                     );
 
                 endpoints.MapControllerRoute(
-                    name:"sabit-anasayfa",
-                    pattern:"anasayfa",
-                    defaults: new { controller="Home",action="Index" });
+                    name: "sabit-anasayfa",
+                    pattern: "anasayfa",
+                    defaults: new { controller = "Home", action = "Index" });
 
                 endpoints.MapControllerRoute(
                    name: "Tarif",
                    pattern: "Tarif/{tip}/{no}",
                    defaults: new { controller = "Cook", action = "Detail2" }
                    );
+
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                  );
 
             });
 
