@@ -61,6 +61,10 @@ namespace CookSite
             //biden fazla rota kullanýlacaksa bu þekilde yazýlmalý
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                  );
 
                 endpoints.MapControllerRoute(
                    name: "default",
@@ -96,10 +100,7 @@ namespace CookSite
                    defaults: new { controller = "Cook", action = "Detail2" }
                    );
 
-                endpoints.MapControllerRoute(
-                    name: "areas",
-                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                  );
+                
 
             });
 

@@ -3,6 +3,8 @@
     {
         <div>
             Merhaba, @(User.FindFirst("Fullname")?.Value)
+            <a asp-action="Index" asp-controller="Home">Anasayfa</a>
+            <a asp-action="Index" asp-controller="Home" asp-area="Management">Yönetim Paneli</a>
             <a asp-action="Logout" asp-controller="Account">Çıkış</a>
         </div>
     }
