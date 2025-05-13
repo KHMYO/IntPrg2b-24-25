@@ -54,7 +54,7 @@
                 <span class="ti-align-justify"></span>
             </button>
 
-            @Html.Partial("_Menu")
+            @Html.Partial("_Menu",ViewBag.CookTypes as List<CookType>)
 
         </div>
     </nav>

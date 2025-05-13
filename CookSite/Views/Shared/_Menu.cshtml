@@ -1,18 +1,39 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<CookSite.Models.CookType>
+
 @{
 }
 
 <div class="collapse navbar-collapse" id="navbarsExample09">
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item  active"><a class="nav-link" asp-action="Index" asp-controller="Home" >Home</a></li>
+        <li class="nav-item  active"><a class="nav-link" asp-action="Index" asp-controller="Home">Home</a></li>
 
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Yemek Türleri</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                <li><a class="dropdown-item" href="about.html">About Me</a></li>
-                <li><a class="dropdown-item" href="about-us.html">About Us</a></li>
+                @* <li><a class="dropdown-item" href="about.html">About Me</a></li>
+                <li><a class="dropdown-item" href="about-us.html">About Us</a></li> *@
+
+                @{
+                    if (Model is null || Model.Count == 0)
+                    {
+                        <li><a class="dropdown-item" href="#">Yemek Türü Bulunamadı!</a></li>
+                    }
+                    else
+                    {
+                        foreach (var yemekTuru in Model)
+                        {
+                            <li>
+                                <a class="dropdown-item" href="#">@yemekTuru.Name</a>
+                            </li>
+                        }
+
+
+                    }
+
+                }
+
+
+
             </ul>
         </li>
 

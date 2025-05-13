@@ -48,7 +48,7 @@ namespace CookSite.Areas.Management.Controllers
         // GET: Management/Recipe/Create
         public IActionResult Create()
         {
-            ViewData["CookTypeId"] = new SelectList(_context.CookTypes, "Id", "Id");
+            ViewData["CookTypeId"] = new SelectList(_context.CookTypes, "Id", "Name");
             return View();
         }
 
