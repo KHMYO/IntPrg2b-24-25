@@ -15,7 +15,7 @@ public partial class Recipe
 
     public string? CreateDate { get; set; }
 
-    public virtual CookType CookType { get; set; } = null!;
+    public virtual CookType? CookType { get; set; } = null!;
 
     public virtual ICollection<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
 

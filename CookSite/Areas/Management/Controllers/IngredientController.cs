@@ -49,8 +49,8 @@ namespace CookSite.Areas.Management.Controllers
         // GET: Management/Ingredient/Create
         public IActionResult Create()
         {
-            ViewData["AmountUnitId"] = new SelectList(_context.Units, "Id", "Id");
-            ViewData["RecipeId"] = new SelectList(_context.Recipes, "Id", "Id");
+            ViewData["AmountUnitId"] = new SelectList(_context.Units, "Id", "Name");
+            ViewData["RecipeId"] = new SelectList(_context.Recipes, "Id", "Name");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace CookSite.Areas.Management.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AmountUnitId"] = new SelectList(_context.Units, "Id", "Id", ingredient.AmountUnitId);
-            ViewData["RecipeId"] = new SelectList(_context.Recipes, "Id", "Id", ingredient.RecipeId);
+            ViewData["AmountUnitId"] = new SelectList(_context.Units, "Id", "Name", ingredient.AmountUnitId);
+            ViewData["RecipeId"] = new SelectList(_context.Recipes, "Id", "Name", ingredient.RecipeId);
             return View(ingredient);
         }
 

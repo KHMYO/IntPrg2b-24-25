@@ -1,0 +1,26 @@
+﻿@model List<Recipe>
+
+@{
+    Layout = "_UserLayout1";
+}
+
+@{
+    if (Model is null || Model.Count == 0)
+    {
+        <p>
+            Herhangi bir tarif bulunamadı
+        </p>
+    }
+    else
+    {
+        <h1>Tarifler</h1>
+        foreach (var tarif in Model)
+        {
+            <div>
+                <b>Tarif adı : </b>@tarif.Name
+            </div>
+        }
+    }
+
+
+}

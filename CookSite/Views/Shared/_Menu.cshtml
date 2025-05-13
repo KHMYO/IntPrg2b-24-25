@@ -23,7 +23,7 @@
                         foreach (var yemekTuru in Model)
                         {
                             <li>
-                                <a class="dropdown-item" href="#">@yemekTuru.Name</a>
+                                <a class="dropdown-item" asp-controller="CookType" asp-action="CooksForCookType" asp-route-id="@yemekTuru.Id">@yemekTuru.Name</a>
                             </li>
                         }
 

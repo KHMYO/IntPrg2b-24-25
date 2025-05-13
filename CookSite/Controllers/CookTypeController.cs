@@ -152,5 +152,28 @@ namespace CookSite.Controllers
         {
             return _context.CookTypes.Any(e => e.Id == id);
         }
+
+        public IActionResult CooksForCookType(int id)
+        {
+
+            var cooks = _context.Recipes
+                .Include(r => r.CookType)
+                .Where(r => r.CookTypeId == id)
+                .ToList();
+
+
+
+            return View(cooks);
+        }
+
+
+
+
+
+
+
+
+
+
     }
 }
