@@ -1,5 +1,6 @@
 ﻿using CookSite.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CookSite.Controllers
 {
@@ -37,6 +38,20 @@ namespace CookSite.Controllers
             return View();
         }
 
+
+        public IActionResult ShowCookDetail(int id) {
+
+            CookSiteContext db= new CookSiteContext();
+            var recipe = db.Recipes
+                               .Include(r=>r.Ingredients)
+                               .Include(r=>r.CookType)
+                               .Include("Ingredients.AmountUnit")
+                               .FirstOrDefault(r => r.Id == id);
+
+
+
+            return View(recipe);
+        }
 
 
     }

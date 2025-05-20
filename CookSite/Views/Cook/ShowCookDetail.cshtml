@@ -1,0 +1,35 @@
+﻿@model Recipe
+
+@{
+    Layout = "_UserLayout1";
+}
+@{
+    if (Model is null)
+    {
+        <div>
+            Tarif bulunamadı !
+        </div>
+    }
+    else
+    {
+        <h1>@Model.Name</h1>
+        <h3>@Model.CookType.Name</h3>
+        if (Model.Ingredients is not null && Model.Ingredients.Count > 0)
+        {
+            <h4>Malzemeler</h4>
+            <ul>
+                @foreach (var malzeme in Model.Ingredients)
+                {
+                    <li>@malzeme.Amount , @malzeme.AmountUnit.Name , @malzeme.Name</li>
+                }
+            </ul>
+        }
+        <br />
+        <br />
+        <h4>Yapılışı</h4>
+        <p>
+            @Model.Perperation
+        </p>
+    }
+}
+

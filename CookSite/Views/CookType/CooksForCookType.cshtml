@@ -17,7 +17,13 @@
         foreach (var tarif in Model)
         {
             <div>
-                <b>Tarif adı : </b>@tarif.Name
+                <p>
+                    <b>Tarif adı : </b>@tarif.Name
+                </p>
+                <p>
+                    <a asp-controller="Cook" asp-action="ShowCookDetail" asp-route-id="@tarif.Id">Tarife Git</a>
+
+                </p>
             </div>
         }
     }
