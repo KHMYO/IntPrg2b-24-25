@@ -1,11 +1,8 @@
-﻿@* @model List<CookSite.Models.CookType> *@
-
+﻿@model IEnumerable<CookSite.Models.CookType>
 @{
-
-    CookSiteContext db = new CookSiteContext();
-    var yemekTurleri = db.CookTypes.ToList();
-
 }
+
+
 
 <div class="collapse navbar-collapse" id="navbarsExample09">
     <ul class="navbar-nav ml-auto">
@@ -14,35 +11,28 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Yemek Türleri</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                @* <li><a class="dropdown-item" href="about.html">About Me</a></li>
-                <li><a class="dropdown-item" href="about-us.html">About Us</a></li> *@
 
                 @{
-                    if (yemekTurleri is null || yemekTurleri.Count == 0)
+                    if (Model is null || Model.Count() == 0)
                     {
                         <li><a class="dropdown-item" href="#">Yemek Türü Bulunamadı!</a></li>
                     }
                     else
                     {
-                        foreach (var yemekTuru in yemekTurleri)
+                        foreach (var yemekTuru in Model)
                         {
                             <li>
                                 <a class="dropdown-item" asp-controller="CookType" asp-action="CooksForCookType" asp-route-id="@yemekTuru.Id">@yemekTuru.Name</a>
                             </li>
                         }
-
-
                     }
 
                 }
-
-
-
             </ul>
         </li>
 
         <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Portfolio</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ViewComponent</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown02">
                 <li><a class="dropdown-item" href="portfolio-1.html">Portfolio Masonary</a></li>
                 <li><a class="dropdown-item" href="portfolio-2.html">Portfolio lightbox</a></li>
@@ -64,7 +54,4 @@
         </li>
     </ul>
 </div>
-
-
-
 

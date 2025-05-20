@@ -39,7 +39,7 @@
 
 <body>
 
-   @Html.Partial("_LoginIndicator")
+    @Html.Partial("_LoginIndicator")
 
     <!-- Navigation Start -->
     <!-- Header Start -->
@@ -54,7 +54,8 @@
                 <span class="ti-align-justify"></span>
             </button>
 
-            @Html.Partial("_Menu",ViewBag.CookTypes as List<CookType>)
+            @*   @Html.Partial("_Menu"/* ,ViewBag.CookTypes as List<CookType> */) *@
+            @await Component.InvokeAsync("Menu")
 
         </div>
     </nav>
